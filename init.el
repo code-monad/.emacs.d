@@ -18,13 +18,24 @@
   (load (expand-file-name "mac.el" user-emacs-directory))
   )
 
-(require 'package)
-;; use tuna mirror
-(add-to-list 'package-archives '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
-(add-to-list 'package-archives '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
+(set-face-attribute 'default nil :height 120)
+
+(setq requrement-configs (expand-file-name "requirements.el" user-emacs-directory))
+
+;; load requirements config
+(when (file-exists-p requrement-configs)
+  (load requrement-configs))
 (package-initialize)
 
-;; base packages
+(setq cpp-configs (expand-file-name "cpp.el" user-emacs-directory))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+;; load requirements config
+(when (file-exists-p cpp-configs)
+  (load cpp-configs))
+
+
+
+(load-theme 'spacemacs-dark)
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
