@@ -14,11 +14,12 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(set-face-attribute 'default nil :height 120)
 (when (eq system-type 'darwin) ;; mac specified configs
   (load (expand-file-name "mac.el" user-emacs-directory))
   )
 
-(set-face-attribute 'default nil :height 120)
+
 
 (setq requrement-configs (expand-file-name "requirements.el" user-emacs-directory))
 
@@ -32,6 +33,18 @@
 ;; load requirements config
 (when (file-exists-p cpp-configs)
   (load cpp-configs))
+
+(setq org-configs (expand-file-name "org.el" user-emacs-directory))
+
+;; load requirements config
+(when (file-exists-p org-configs)
+  (load org-configs))
+
+(setq plugin-configs (expand-file-name "plugin_conf.el" user-emacs-directory))
+
+;; load requirements config
+(when (file-exists-p plugin-configs)
+  (load plugin-configs))
 
 
 
