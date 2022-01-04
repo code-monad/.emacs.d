@@ -1,3 +1,11 @@
+(require 'package)
+(package-initialize)
+;; use tuna mirror
+(setq package-archives '(("elpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                         ("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
+      )
+
+
 ;; install function
 (defun ensure-package-installed (&rest packages)
   "Assure every package is installed, ask for installation if it’s not.
@@ -13,11 +21,6 @@ Return a list of installed packages or nil for every skipped package."
          package)))
    packages))
 
-(require 'package)
-;; use tuna mirror
-(setq package-archives '(("elpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-                         ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
-      )
 
 (package-refresh-contents)
 ;; pagckage lists
@@ -33,4 +36,8 @@ Return a list of installed packages or nil for every skipped package."
 			  'dap-mode
 			  'yasnippet
 			  'flycheck
-			  'cmake-mode)
+			  'cmake-mode
+			  'rustic
+			  'lsp-mode
+			  'lsp-ui
+			  'dap-mode)

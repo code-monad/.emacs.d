@@ -18,7 +18,7 @@
   (load (expand-file-name "mac.el" user-emacs-directory))
   )
 
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 180)
 
 (setq requrement-configs (expand-file-name "requirements.el" user-emacs-directory))
 
@@ -33,6 +33,17 @@
 (when (file-exists-p cpp-configs)
   (load cpp-configs))
 
+(setq rust-configs (expand-file-name "rust.el" user-emacs-directory))
+
+;; load requirements config
+(when (file-exists-p rust-configs)
+  (load rust-configs))
+
+(setq lsp-configs (expand-file-name "lsp.el" user-emacs-directory))
+
+;; load requirements config
+(when (file-exists-p lsp-configs)
+  (load lsp-configs))
 
 
 (load-theme 'spacemacs-dark)
