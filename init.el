@@ -14,11 +14,11 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(set-face-attribute 'default nil :height 180)
 (when (eq system-type 'darwin) ;; mac specified configs
   (load (expand-file-name "mac.el" user-emacs-directory))
   )
 
-(set-face-attribute 'default nil :height 180)
 
 (setq requrement-configs (expand-file-name "requirements.el" user-emacs-directory))
 
@@ -27,11 +27,19 @@
   (load requrement-configs))
 (package-initialize)
 
+
+(setq org-configs (expand-file-name "org.el" user-emacs-directory))
+
+;; load org-mode config
+(when (file-exists-p org-configs)
+  (load org-configs))
+
 (setq cpp-configs (expand-file-name "cpp.el" user-emacs-directory))
 
 ;; load requirements config
 (when (file-exists-p cpp-configs)
   (load cpp-configs))
+
 
 (setq rust-configs (expand-file-name "rust.el" user-emacs-directory))
 
@@ -44,6 +52,14 @@
 ;; load requirements config
 (when (file-exists-p lsp-configs)
   (load lsp-configs))
+
+
+(setq plugin-configs (expand-file-name "plugin_conf.el" user-emacs-directory))
+
+;; load requirements config
+(when (file-exists-p plugin-configs)
+  (load plugin-configs))
+
 
 
 (load-theme 'spacemacs-dark)
