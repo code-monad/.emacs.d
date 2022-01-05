@@ -10,6 +10,7 @@
   (lsp-eldoc-render-all t)
   (lsp-idle-delay 0.6)
   (lsp-rust-analyzer-server-display-inlay-hints t)
+  :bind (:map rust-mode-map ("C-<f9>" . lsp-rust-analyzer-inlay-hints-mode))
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
